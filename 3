@@ -1,0 +1,18 @@
+
+def meow():
+    x = int(input("enter the first number : "))
+    y = int(input("enter the second number : "))   
+    z = (input("enter the operator : "))
+    if z == "sum":
+        print(x+y)
+    elif z== "difference":
+        print(x - y)   
+    elif z == "multiple":
+        print( x * y)
+        meow()
+    elif z =="divide":
+        if y == 0:
+            print("we cant divide number by 0")
+        else:
+            print(x / y)
+meow()
