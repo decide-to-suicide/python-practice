@@ -1,0 +1,13 @@
+def meow():
+    x = int(input("select one of this \n 1: f to c \n 2: c to f \n"))
+    y= int(input("enter the temperature : "))
+    if x ==1:
+        t= (y-32) / 1.8
+        print(f"your f temperature is : {t}")
+
+    elif x ==2:
+        t = y *1.8 +32
+        print(f"your f temperature is : {t}")
+
+meow()
+
