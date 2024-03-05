@@ -1,0 +1,13 @@
+import turtle
+meow = turtle.Screen()
+meow.bgcolor(input("enter your bg color: "))
+meow.title("meow")
+s= turtle.Turtle()
+s.shape("turtle")
+s.color(input("enter your turtle color : "))
+size = input("enter the turtle forward size: ")
+for i in range(4):
+    s.forward(int(size))
+    s.left(90)
+    s.stamp()
+meow.mainloop()
