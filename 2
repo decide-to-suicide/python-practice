@@ -1,0 +1,18 @@
+v=0
+def meow():
+    global v
+    print("salam be bank khosh amadid")
+    print("yek gozine ra vared knid \n 1: variz pool \n 2: bardasht pool \n 3: mojodi")
+    x = int(input())
+    if x == 1:
+        v += int(input("meghdar varizi ra vared knid :"))
+        print(f"baghi mande pool shoma : {v}")
+        meow()
+    elif x ==2:
+        v -= int(input("meghdar bardasht ra vared knid:"))
+        print(f"baghi mande pool shoma : {v}")
+        meow()
+    elif x==3 :
+        print(f"mojodi : {v}")
+        meow()
+meow()
