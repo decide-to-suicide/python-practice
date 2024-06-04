@@ -1,0 +1,102 @@
+import mysql.connector
+# اظلاعات مربوط به دیتابیس
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="meow",
+  password="1383ali1383ali",
+  database="mydatabase"
+)
+
+
+mycursor = mydb.cursor()
+
+
+
+
+
+
+#اگر تیبل وجود داشت این بخش را کامنت کنید
+mycursor.execute("CREATE TABLE meow (date VARCHAR(255), category VARCHAR(255),price VARCHAR(255), describer VARCHAR(255))")
+#اگر تیبل وجود داشت این بخش را کامنت کنید
+
+
+
+
+
+def add():
+    sql = "INSERT INTO meow (date, category,price,describer) VALUES (%s, %s,%s,%s)"
+    date= input("enter date ")
+    category= input("enter category ")
+    price= input("enter price ")
+    describer= input("enter describe ")
+    val = (date, category,price,describer)
+    mycursor.execute(sql, val)
+
+    mydb.commit()
+    table()
+
+def show():
+    mycursor.execute("SELECT * FROM meow")
+
+    myresult = mycursor.fetchall()
+
+    for x in myresult:
+        print(x)
+    table()
+def update():
+    print("select that part u want to change \n 1- date \n 2- category \n 3- price \n 4- describe")
+    k= int(input("pls enter your choice : "))
+    if k==1:
+        j="date"
+    elif k==2:
+        j ="category"
+    elif k ==3:
+        j="price"
+    elif k==4:
+        j="describer"
+    y=input(f"pls enter your old {j}")
+    u=input(f"pls enter your new {j}")
+    sql = f"UPDATE meow SET {j} = {u} WHERE {j} = {y}"
+    mycursor.execute(sql)
+
+    mydb.commit()
+    table()
+def delete():
+    print("select that part for deleting all of that \n 1- date \n 2- category \n 3- price \n 4- describe")
+    k= int(input("pls enter your choice : "))
+
+    if k==1:
+        j="date"
+    elif k==2:
+        j ="category"
+    elif k ==3:
+        j="price"
+    elif k==4:
+        j="describer"
+    u= input(f"pls enter your {j} for deleting :")
+    sql = f"DELETE FROM meow WHERE {j} = {u}"
+
+    mycursor.execute(sql)
+
+    mydb.commit()
+    table()
+def exit():
+    
+    sql = "DROP TABLE meow"    
+
+    mycursor.execute(sql)
+def table():
+    x=int(input(" 1-add price : \n 2- show price : \n 3-update price : \n 4- delete price : \n 5- exit : \n please enter your choice :"))
+    if x==1:
+        add()
+    elif x==2:
+        show()
+    elif x==3:
+        update()
+    elif x==4:
+        delete()
+    elif x==5:
+        exit()
+    
+
+table()
